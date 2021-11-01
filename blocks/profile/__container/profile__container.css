@@ -1,0 +1,7 @@
+.profile__container {
+    margin: 25px auto 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

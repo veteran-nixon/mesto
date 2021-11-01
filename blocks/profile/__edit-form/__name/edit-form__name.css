@@ -1,0 +1,35 @@
+.edit-form__name {
+    margin: 54px auto 0;
+    height: 27px;
+    width: 358px;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+}
+
+.edit-form__name::placeholder {
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+}
+
+.edit-form__name:focus {
+    outline: none;
+    border: 2px solid rgba(52, 123, 230, .8);
+    box-shadow: 0 0 4px rgba(52, 123, 230, 1);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}

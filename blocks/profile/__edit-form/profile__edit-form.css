@@ -1,0 +1,15 @@
+.profile__edit-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 430px;
+    height: 330px;
+    z-index: 5;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
