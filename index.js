@@ -26,4 +26,19 @@ window.addEventListener('click', function(event) {
     }
 });
 
+// сохранить поля отправки попап
+let formElement = document.querySelector('.edit-form__submit-button');
+let nameInput = document.querySelector('.edit-form__name');
+let jobInput = document.querySelector('.edit-form__bio');
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    let nameParagraph = document.querySelector('.profile__info-name');
+    let bioParagraph = document.querySelector('.profile__info-bio');
+    nameParagraph.textContent = nameInput.value;
+    bioParagraph.textContent = jobInput.value;
+}
+
+formElement.addEventListener('click', formSubmitHandler); 
+
 
