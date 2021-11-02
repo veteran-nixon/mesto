@@ -1,9 +1,16 @@
+let nameParagraph = document.querySelector('.profile__info-name');
+let bioParagraph = document.querySelector('.profile__info-bio');
+let nameInput = document.querySelector('.edit-form__name');
+let bioInput = document.querySelector('.edit-form__bio');
+
 // открыть окно редактирования профиля
 let editButton = document.querySelector('.profile__edit-button');
 
 function addPopup() {
     let popup = document.querySelector('.profile__overlay');
     popup.setAttribute('style', 'display:flex');
+    nameInput.value = nameParagraph.textContent;
+    bioInput.value = bioParagraph.textContent;
 }
 
 editButton.addEventListener('click', addPopup);
@@ -28,15 +35,11 @@ window.addEventListener('click', function(event) {
 
 // сохранить поля отправки попап
 let formElement = document.querySelector('.edit-form__submit-button');
-let nameInput = document.querySelector('.edit-form__name');
-let jobInput = document.querySelector('.edit-form__bio');
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    let nameParagraph = document.querySelector('.profile__info-name');
-    let bioParagraph = document.querySelector('.profile__info-bio');
     nameParagraph.textContent = nameInput.value;
-    bioParagraph.textContent = jobInput.value;
+    bioParagraph.textContent = bioInput.value;
 }
 
 formElement.addEventListener('click', formSubmitHandler); 
