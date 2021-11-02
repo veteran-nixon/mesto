@@ -1,7 +1,7 @@
-let nameParagraph = document.querySelector('.profile__info-name');
-let bioParagraph = document.querySelector('.profile__info-bio');
-let nameInput = document.querySelector('.edit-form__name');
-let bioInput = document.querySelector('.edit-form__bio');
+let nameParagraph = document.querySelector('.profile__info-name');  //поле имение
+let bioParagraph = document.querySelector('.profile__info-bio'); //поле о себе
+let nameInput = document.querySelector('.edit-form__name'); //инпут имени
+let bioInput = document.querySelector('.edit-form__bio');   //инпут о себе
 
 // открыть окно редактирования профиля
 let editButton = document.querySelector('.profile__edit-button');
@@ -33,15 +33,33 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// сохранить поля отправки попап
+// сохранить поля отправки попап нажатием на кнопку "сохранить"
 let formElement = document.querySelector('.edit-form__submit-button');
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
     nameParagraph.textContent = nameInput.value;
     bioParagraph.textContent = bioInput.value;
+    closePopup();
 }
 
 formElement.addEventListener('click', formSubmitHandler); 
 
+// сохранить поля отправки нажатием ентер при фокусе инпут "имя" и "о себе"
+nameInput.addEventListener('keypress', function(evt) {
+    if (evt.keyCode === 13) { 
+        evt.preventDefault();
+        nameParagraph.textContent = nameInput.value;
+        bioParagraph.textContent = bioInput.value;
+        closePopup();
+    }
+});
 
+bioInput.addEventListener('keypress', function(evt) {
+    if (evt.keyCode === 13) { 
+        evt.preventDefault();
+        nameParagraph.textContent = nameInput.value;
+        bioParagraph.textContent = bioInput.value;
+        closePopup();
+    }
+});

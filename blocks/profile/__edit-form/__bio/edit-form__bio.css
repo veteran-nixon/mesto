@@ -10,6 +10,8 @@
     text-align: left;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    box-sizing: content-box;
+    padding-bottom: 13px;
 }
 
 .edit-form__bio::placeholder {
@@ -31,4 +33,11 @@
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
+}
+
+@media all and (max-width: 600px) {
+    .edit-form__bio {
+        width: 238px;
+        margin: 30px auto 0;
+    }
 }

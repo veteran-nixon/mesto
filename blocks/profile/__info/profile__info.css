@@ -1,3 +1,17 @@
 .profile__info {
     width: 336px;
+    margin: 0;
+}
+
+@media all and (max-width: 900px) {
+    .profile__info {
+        width: 282px;
+    }
+}
+
+
+@media all and (max-width: 600px) {
+    .profile__info {
+        width: 100%;
+    }
 }

@@ -4,4 +4,20 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    align-items: baseline;
+}
+
+@media all and (max-width: 900px) {
+    .profile__container {
+        width: 282px;
+        justify-content: flex-start;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .profile__container {
+        margin: 26px auto 14px;
+        justify-content: center;
+    }
+    
 }

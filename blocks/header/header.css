@@ -1,5 +1,18 @@
 .header {
-    min-width: 880px;
+    width: 880px;
     padding-top: 45px;
     margin: 0 auto;
+}
+
+@media all and (max-width: 900px) {
+    .header {
+        width: 581px;
+    }
+ }
+
+@media all and (max-width: 600px) {
+   .header {
+       width: 320px;
+       padding-top: 28px;
+   }
 }

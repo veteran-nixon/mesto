@@ -8,4 +8,26 @@
     line-height: 48px;
     color: #fff;
     margin: 0;
+    align-items: baseline;
+}
+
+@media all and (max-width: 900px) {
+    .profile__info-name {
+        width: 248px;
+        font-size: 35px;
+        line-height: 41px;
+        margin-right: 10px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .profile__info-name {
+        width: 189px;
+        font-size: 27px;
+        font-style: normal;
+        line-height: 33px;
+        text-align: center;
+        margin-right: 10px;
+    }
+    
 }

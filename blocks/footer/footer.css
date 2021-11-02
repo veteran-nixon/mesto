@@ -3,3 +3,19 @@
     padding-bottom: 60px;
     width: 880px;
 }
+
+@media all and (max-width: 900px) {
+    .footer {
+        margin: 48px auto 0;
+        padding-bottom: 36px;
+        width: 581px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .footer {
+        margin: 48px auto 0;
+        padding-bottom: 36px;
+        width: 320px;
+    }
+}

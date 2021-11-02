@@ -7,13 +7,35 @@
     background-color: #000;
     width: 150px;
     height: 50px;
-    border: 1px solid #FFF;
+    border: 2px solid #FFF;
+    border-radius: 2px;
     box-sizing: border-box;
     transition: opacity .3s linear;
     cursor: pointer;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
 }
 
 .profile__add-button:hover {
     opacity: .6;
     cursor: pointer;
+}
+
+@media all and (max-width: 900px) {
+    .profile__add-button {
+        width: 100px;
+        margin: 36px auto 0;
+        background-image: url(../../../images/add_button.svg);
+        margin: 0 0 0 auto;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .profile__add-button {
+        width: 282px;
+        margin: 36px auto 0;
+        background-image: url(../../../images/Add360Button.svg);
+    }
 }

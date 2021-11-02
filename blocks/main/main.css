@@ -1,4 +1,16 @@
 .main {
-    max-width: 880px;
-    margin: 40px auto 0;
+    width: 880px;
+    margin: 0 auto;
+}
+
+@media all and (max-width: 900px) {
+    .main {
+        width: 581px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .main {
+        width: 320px;
+    }
 }

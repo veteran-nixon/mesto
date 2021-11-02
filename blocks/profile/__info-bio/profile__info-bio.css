@@ -10,3 +10,19 @@
     margin: 0;
     width: 100%;
 }
+
+@media all and (max-width: 900px) {
+    .profile__info-bio {
+        width: 282px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .profile__info-bio {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}

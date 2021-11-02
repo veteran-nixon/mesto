@@ -16,3 +16,13 @@
     opacity: .6;
     cursor: pointer;
 }
+
+@media all and (max-width: 600px) {
+    .edit-form__close-icon {
+        background-image: url(../../../../images/CloseIcon320.svg);
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -36px;
+    }
+}
