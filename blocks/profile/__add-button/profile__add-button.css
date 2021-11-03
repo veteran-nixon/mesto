@@ -6,7 +6,7 @@
     background-position: center;
     background-color: #000;
     width: 150px;
-    height: 50px;
+    min-height: 50px;
     border: 2px solid #FFF;
     border-radius: 2px;
     box-sizing: border-box;
@@ -27,7 +27,6 @@
     .profile__add-button {
         width: 100px;
         margin: 36px auto 0;
-        background-image: url(../../../images/add_button.svg);
         margin: 0 0 0 auto;
     }
 }
@@ -36,6 +35,6 @@
     .profile__add-button {
         width: 282px;
         margin: 36px auto 0;
-        background-image: url(../../../images/Add360Button.svg);
+        background-image: url(../../../images/add_button320.svg);
     }
 }

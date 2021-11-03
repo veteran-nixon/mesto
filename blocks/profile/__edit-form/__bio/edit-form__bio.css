@@ -1,13 +1,12 @@
 .edit-form__bio {
     margin: 30px auto 0;
     width: 358px;
-    height: 27px;
-    font-family: Inter;
+    min-height: 27px;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 17px;
-    text-align: left;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     box-sizing: content-box;
@@ -16,12 +15,11 @@
 
 .edit-form__bio::placeholder {
     color: #000;
-    font-family: Inter;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 17px;
-    text-align: left;
 }
 
 .edit-form__bio:focus {

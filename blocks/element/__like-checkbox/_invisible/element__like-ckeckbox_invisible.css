@@ -1,8 +1,8 @@
 .element__like-checkbox_invisible {
 	position: absolute;
-	width: 1px; /* если у элемента не будет размеров, некоторые браузеры посчитают, что его вообще нет */
+	width: 1px; 
 	height: 1px;
-	overflow: hidden; /* без этого свойства тоже сработает, но так наверняка. Мы его ещё изучим, оно скрывает элементы, выходящие за границы родителя */
+	overflow: hidden; 
 	clip: rect(0 0 0 0);
 }
 
@@ -21,20 +21,9 @@
 }
 
 .element__like-checkbox_invisible:hover+span {
-	display: inline-block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    cursor: pointer;
     opacity: .5;
-	background-image: url(../../../../images/like_button.svg);
 }
 
 .element__like-checkbox_invisible:checked+span {
-	display: inline-block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    cursor: pointer;
-	background-image: url(../../../../images/Union.png);
+	background-image: url(../../../../images/like_button_checked.svg);
 }

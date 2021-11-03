@@ -8,4 +8,5 @@
     -ms-border-radius: 0 0 10px 10px;
     -o-border-radius: 0 0 10px 10px;
     box-sizing: border-box;
+    position: relative;
 }

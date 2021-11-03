@@ -8,7 +8,6 @@
 @media all and (max-width: 900px) {
     .profile {
         width: 581px;
-        flex-direction: row;
         align-items: center;
         margin: 42px auto 0;
     }
@@ -19,7 +18,6 @@
     .profile {
         width: 282px;
         flex-direction: column;
-        align-items: center;
         margin: 42px auto 0;
     }
 }
