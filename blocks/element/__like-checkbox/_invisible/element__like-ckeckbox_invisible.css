@@ -1,8 +1,8 @@
 .element__like-checkbox_invisible {
 	position: absolute;
-	width: 1px; 
+	width: 1px;
 	height: 1px;
-	overflow: hidden; 
+	overflow: hidden;
 	clip: rect(0 0 0 0);
 }
 
