@@ -1,4 +1,4 @@
-.profile__info-name {
+.profile__name {
     word-wrap: break-word;
     max-width: 294px;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
@@ -15,7 +15,7 @@
 }
 
 @media all and (max-width: 900px) {
-    .profile__info-name {
+    .profile__name {
         max-width: 248px;
         font-size: 35px;
         line-height: 41px;
@@ -24,7 +24,7 @@
 }
 
 @media all and (max-width: 600px) {
-    .profile__info-name {
+    .profile__name {
         max-width: 189px;
         font-size: 27px;
         line-height: 33px;

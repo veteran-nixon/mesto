@@ -1,4 +1,4 @@
-.edit-form__heading {
+.popup__heading {
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     font-size: 24px;
     font-style: normal;
@@ -8,7 +8,7 @@
 }
 
 @media all and (max-width: 600px) {
-    .edit-form__heading {
+    .popup__heading {
         font-size: 18px;
         font-weight: 900;
         line-height: 22px;

@@ -1,7 +1,7 @@
-.edit-form__bio {
-    margin: 30px auto 0;
-    width: 358px;
+.popup__name {
+    margin: 54px auto 0;
     min-height: 27px;
+    width: 358px;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -13,7 +13,7 @@
     padding-bottom: 13px;
 }
 
-.edit-form__bio::placeholder {
+.popup__name::placeholder {
     color: #000;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
@@ -22,10 +22,10 @@
     line-height: 17px;
 }
 
-.edit-form__bio:focus {
+.popup__name:focus {
     outline: none;
-    border: 2px solid rgba(52, 123, 230, 0.8);
-    box-shadow: 0 0 5px rgba(52, 123, 230, 1);
+    border: 2px solid rgba(52, 123, 230, .8);
+    box-shadow: 0 0 4px rgba(52, 123, 230, 1);
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -34,8 +34,8 @@
 }
 
 @media all and (max-width: 600px) {
-    .edit-form__bio {
+    .popup__name {
         width: 238px;
-        margin: 30px auto 0;
+        margin: 75px auto 0;
     }
 }

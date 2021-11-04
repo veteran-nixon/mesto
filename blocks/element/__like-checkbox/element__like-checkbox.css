@@ -4,5 +4,6 @@
     margin: 5px 5px 1px auto;
     display: block;
     position: relative;
+    align-self: baseline;
 }
 

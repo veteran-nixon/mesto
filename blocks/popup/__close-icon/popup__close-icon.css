@@ -1,7 +1,7 @@
-.edit-form__close-icon {
+.popup__close-icon {
     width: 32px;
     min-height: 32px;
-    background-image: url(../../../../images/close_icon.svg);
+    background-image: url(../../../images/close_icon.svg);
     background-color: rgba(0, 0, 0, 0);
     background-position: center;
     border: none;
@@ -12,14 +12,14 @@
     cursor: pointer;
 }
 
-.edit-form__close-icon:hover {
+.popup__close-icon:hover {
     opacity: .6;
     cursor: pointer;
 }
 
 @media all and (max-width: 600px) {
-    .edit-form__close-icon {
-        background-image: url(../../../../images/close_icon320.svg);
+    .popup__close-icon {
+        background-image: url(../../../images/close_icon320.svg);
         background-repeat: no-repeat;
         width: 20px;
         height: 20px;

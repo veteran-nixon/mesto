@@ -1,6 +1,6 @@
 @import url(../vendor/normalize.css);
 
-/* fonts */
+/* fonts: Inter*/
 @import url(../vendor/fonts/fonts.css);
 
 /* page styles */
@@ -19,18 +19,20 @@
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__container/profile__container.css);
-@import url(../blocks/profile/__info-name/profile__info-name.css);
+@import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__info-bio/profile__info-bio.css);
+@import url(../blocks/profile/__bio/profile__bio.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-/* popup */
-@import url(../blocks/profile/__overlay/profile__overlay.css);
-@import url(../blocks/profile/__edit-form/profile__edit-form.css);
-@import url(../blocks/profile/__edit-form/__close-icon/edit-form__close-icon.css);
-@import url(../blocks/profile/__edit-form/__heading/edit-form__heading.css);
-@import url(../blocks/profile/__edit-form/__name/edit-form__name.css);
-@import url(../blocks/profile/__edit-form/__bio/edit-form__bio.css);
-@import url(../blocks/profile/__edit-form/__submit-button/edit-form__submit-button.css);
+
+/* popup styles*/
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__bio/popup__bio.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 
 /* elements styles*/
 @import url(../blocks/elements/elements.css);
@@ -38,7 +40,6 @@
 /* element styles */
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
-@import url(../blocks/element/__caption-container/element__caption-container.css);
 @import url(../blocks/element/__caption/element__caption.css);
 @import url(../blocks/element/__caption-heading/element__caption-heading.css);
 @import url(../blocks/element/__like-checkbox/element__like-checkbox.css);
