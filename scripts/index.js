@@ -63,3 +63,17 @@ bioInput.addEventListener('keypress', function(evt) {
         closePopup();
     }
 });
+
+// менять цвет кнопки лайка
+let likeButtons = document.querySelectorAll('.element__like-button');
+
+for (let i = 0; i < likeButtons.length; i++) {
+    likeButtons[i].addEventListener('click', function likeClick() {
+        likeButtons[i].classList.toggle('element__like-button_active');
+    });
+}
+
+
+
+
+
