@@ -1,77 +1,48 @@
-let nameParagraph = document.querySelector('.profile__name');  //поле имение
-let bioParagraph = document.querySelector('.profile__bio'); //поле о себе
-let nameInput = document.querySelector('.popup__name'); //инпут имени
-let bioInput = document.querySelector('.popup__bio');   //инпут о себе
-
-// открыть окно редактирования профиля
+/** Поле "Имя" */
+let profileName = document.querySelector('.profile__name');
+/** Поле "О себе"*/
+let profileBio = document.querySelector('.profile__bio');
+/** Кнопка открывающая попап */
 let editButton = document.querySelector('.profile__edit-button');
-
-function addPopup() {
-    let popup = document.querySelector('.popup');
-    popup.classList.add('popup_opened');
-    nameInput.value = nameParagraph.textContent;
-    bioInput.value = bioParagraph.textContent;
-}
-
-editButton.addEventListener('click', addPopup);
-
-// закрыть окно редактирования профиля нажатием на крестик
+/** Окно редактирования профиля */
+let popup = document.querySelector('.popup');
+/** Кнопка закрывающая окно редактирования профиля нажатием на крестик */ 
 let closeButton = document.querySelector('.popup__close-icon');
+/** Форма редактирования профиля */
+let formElement = document.querySelector('.popup__form');
+/** Поле ввода имени в попап*/
+let nameInput = formElement.querySelector('#name'); 
+/** Поле ввода информации о себе в попап */
+let bioInput = formElement.querySelector('#bio');
 
+/** Функция открытия окна редактрирования профиля нажатием на кнопку */
+function addPopup() {
+    popup.classList.add('popup_opened');
+    nameInput.value = profileName.textContent;
+    bioInput.value = profileBio.textContent;
+}
+/** Функция закрытия окна редактрирования профиля нажатием на кнопку */
 function closePopup() {
-    let popup = document.querySelector('.popup');
     popup.classList.remove('popup_opened');
 }
 
-closeButton.addEventListener('click', closePopup);
-
-// закрыть окно редактирования профиля нажатием на любую часть экрана вне попап
-window.addEventListener('click', function(event) {
-    let popup = document.querySelector('.popup');
-    if (event.target == popup) {
-        popup.classList.remove('popup_opened');
-    }
-});
-
-// сохранить поля отправки попап нажатием на кнопку "сохранить"
-let formElement = document.querySelector('.popup__submit-button');
-
+/** Функция отправки данных формы на сервер
+ * при нажатии "сохранить" попап закрывается, данные сохраняются в поля "Имя" и "О себе"
+ */
 function formSubmitHandler (evt) {
     evt.preventDefault();
-    nameParagraph.textContent = nameInput.value;
-    bioParagraph.textContent = bioInput.value;
+    profileName.textContent = nameInput.value;
+    profileBio.textContent = bioInput.value;
     closePopup();
 }
 
-formElement.addEventListener('click', formSubmitHandler); 
+formElement.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener('click', addPopup);
+closeButton.addEventListener('click', closePopup);
 
-// сохранить поля отправки нажатием ентер при фокусе инпут "имя" и "о себе"
-nameInput.addEventListener('keypress', function(evt) {
-    if (evt.keyCode === 13) { 
-        evt.preventDefault();
-        nameParagraph.textContent = nameInput.value;
-        bioParagraph.textContent = bioInput.value;
-        closePopup();
-    }
-});
 
-bioInput.addEventListener('keypress', function(evt) {
-    if (evt.keyCode === 13) { 
-        evt.preventDefault();
-        nameParagraph.textContent = nameInput.value;
-        bioParagraph.textContent = bioInput.value;
-        closePopup();
-    }
-});
 
-// менять цвет кнопки лайка
-let likeButtons = document.querySelectorAll('.element__like-button');
 
-for (let i = 0; i < likeButtons.length; i++) {
-    likeButtons[i].addEventListener('click', function likeClick() {
-        likeButtons[i].classList.toggle('element__like-button_active');
-    });
-}
 
 
 
