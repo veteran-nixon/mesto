@@ -16,4 +16,4 @@
 
 ### _автор Долганёв Евгений, 2021_
 
-#### [ссылка на проект](https://veteran-nixon.github.io/mesto/){:target="_blank" rel="noopener"}
+#### [ссылка на проект](https://veteran-nixon.github.io/mesto/)
