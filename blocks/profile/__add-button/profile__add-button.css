@@ -16,6 +16,7 @@
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
+    padding: 0;
 }
 
 .profile__add-button:hover {
@@ -32,7 +33,7 @@
 @media all and (max-width: 600px) {
     .profile__add-button {
         width: 282px;
-        margin: 36px auto 0;
+        margin: 30px auto 0;
         background-image: url(../../../images/add_button320.svg);
     }
 }

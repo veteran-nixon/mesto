@@ -3,14 +3,15 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 900;
-    line-height: 29px;
+    line-height: 29.05px;
     margin: 34px 64px 0 36px;
+    padding: 0;
 }
 
 @media all and (max-width: 600px) {
     .popup__heading {
         font-size: 18px;
-        line-height: 22px;
+        line-height: 21.78px;
         margin: 25px auto 0;
     }
 }
