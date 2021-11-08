@@ -1,5 +1,5 @@
 .profile__container {
-    margin: 25px auto 16px;
+    margin: 18px auto 6px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,7 +16,7 @@
 
 @media all and (max-width: 600px) {
     .profile__container {
-        margin: 26px auto 14px;
+        margin: 26px auto 7px;
         justify-content: center;
     }
 }
