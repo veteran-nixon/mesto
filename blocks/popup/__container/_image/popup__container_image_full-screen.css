@@ -1,0 +1,20 @@
+.popup__container_image_full-screen {
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: 562px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+@media all and (max-width: 900px) {
+    .popup__container_image_full-screen {
+        height: 492px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .popup__container_image_full-screen {
+        height: 324px;
+        margin: 136px auto auto;
+    }
+}

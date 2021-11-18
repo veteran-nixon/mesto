@@ -1,6 +1,8 @@
 .popup {
     z-index: 2;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
     position: fixed;
     background-color: rgba(0, 0, 0, .5);
     width: 100%;
@@ -8,4 +10,9 @@
     top: 0;
     left: 0;
     align-content: center;
+    transition: visibility .2s linear, opacity .2s linear;
+    -webkit-transition: visibility .2s linear, opacity .2s linear;
+    -moz-transition: visibility .2s linear, opacity .2s linear;
+    -ms-transition: visibility .2s linear, opacity .2s linear;
+    -o-transition: visibility .2s linear, opacity .2s linear;
 }
