@@ -1,4 +1,4 @@
-.popup__container_image_full-screen {
+.popup__container_type_picture {
     max-width: 75vw;
     max-height: 75vh;
     width: auto;
@@ -7,13 +7,13 @@
 }
 
 @media all and (max-width: 900px) {
-    .popup__container_image_full-screen {
+    .popup__container_type_picture {
         height: 492px;
     }
 }
 
 @media all and (max-width: 600px) {
-    .popup__container_image_full-screen {
+    .popup__container_type_picture {
         height: 324px;
         margin: 136px auto auto;
     }
