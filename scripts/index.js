@@ -30,6 +30,10 @@ const linkInput = cardFormElement.querySelector('.popup__input_type_card-add-lin
 const elements = document.querySelector('.elements');
 /**  Карточка с картинкой для клонирования*/
 const template = document.querySelector('#element').content;
+/** Попап с картикой */
+const imagePopup = document.querySelector('.popup_type_picture');
+/** Кнопка закрывающая попап с картинкой */
+const imageCloseButton = imagePopup.querySelector('.popup__close-icon');
 
 /** Функция открытия попап */
 function openPopup(e) {
@@ -56,23 +60,22 @@ function addNewCard(name, link) {
   const element = template.cloneNode(true);
   const trashButton = element.querySelector('.element__trash-button');
   const likeButton = element.querySelector('.element__like-button');
-  const imagePopup = document.querySelector('.popup_type_picture');
   const image = imagePopup.querySelector('.popup__image');
   const caption = imagePopup.querySelector('.popup__heading');
   const cardImage = element.querySelector('.element__image');
   const imageElementCaption = element.querySelector('.element__caption-heading');
-  const imageCloseButton = imagePopup.querySelector('#image__close-icon');
   cardImage.src = link;
   cardImage.alt = name;
   imageElementCaption.textContent = name;
 
   cardImage.addEventListener('click', () => {
     image.src = link;
+    image.alt = name;
     caption.textContent = name;
     openPopup(imagePopup);
   });
 
-  imageCloseButton.addEventListener('click', () => closePopup(imagePopup));
+  
   likeButton.addEventListener('click', () => likeButton.classList.toggle('element__like-button_active'));
   trashButton.addEventListener('click', () => trashButton.closest('.element').remove());
 
@@ -80,8 +83,8 @@ function addNewCard(name, link) {
 }
 
 /** Функция добавления 6 карточек из елементов массима initialCards */
-initialCards.forEach (initialCards => {
-  elements.append(addNewCard(initialCards.name, initialCards.link));
+initialCards.forEach (elem => {
+  elements.append(addNewCard(elem.name, elem.link));
 });
 
 /** Фунция сохранения формы для новой карточки */
@@ -89,12 +92,14 @@ function cardFormSubmitHandler (evt) {
   evt.preventDefault();
   if (headingInput.value == '' || linkInput.value == '') {
   } else {
-    initialCards.name = headingInput.value;
-    initialCards.link = linkInput.value;
+    const newCard = {
+      name: headingInput.value,
+      link: linkInput.value
+    };
     closePopup(cardPopup);
     headingInput.value = '';
     linkInput.value = '';
-    elements.prepend(addNewCard(initialCards.name, initialCards.link));
+    elements.prepend(addNewCard(newCard.name, newCard.link));
   }
 }
 
@@ -120,7 +125,8 @@ cardCloseButton.addEventListener('click', () => {
 /** Добавить новую карточку на страницу */
 cardFormElement.addEventListener('submit', cardFormSubmitHandler);
 
-
+/** Закрыть попап с картинкой */
+imageCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
 
 
