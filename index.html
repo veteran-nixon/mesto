@@ -39,13 +39,19 @@
     <footer class="footer">
       <p class="footer__note">&copy;2021. Mesto Russia</p>
     </footer>
-    <div class="popup popup_type_profile" >
+    <div class="popup popup_type_profile">
       <div class="popup__container">
         <button type="button" class="popup__close-icon" aria-label="close"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="popup__form" name="profile-form">
-          <input class="popup__input popup__input_type_profile-name" id="name" type="text" name="name" placeholder="Имя" autocomplete="off">
-          <input class="popup__input popup__input_type_profile-bio" id="bio" type="text" name="bio" placeholder="О себе" autocomplete="off">
+        <form class="popup__form" name="profile-form" novalidate>
+          <label class="popup__field">
+            <input class="popup__input popup__input_type_profile-name" id="name-input" type="text" name="name" placeholder="Имя" autocomplete="off" required minlength="2" maxlength="40">
+            <span class="popup__input-error name-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input class="popup__input popup__input_type_profile-bio" id="bio-input" type="text" name="bio" placeholder="О себе" autocomplete="off" required minlength="2" maxlength="200">
+            <span class="popup__input-error bio-input-error"></span>
+          </label>
           <button type="submit" class="popup__submit-button" aria-label="submit" id="profile__submit-button">Сохранить</button>
         </form>
       </div>
@@ -54,9 +60,15 @@
       <div class="popup__container">
         <button type="button" class="popup__close-icon" aria-label="close"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form" name="card-form" id="card-form">
-          <input class="popup__input popup__input_type_card-add-heading" id="heading" type="text" name="heading" placeholder="Название" autocomplete="off">
-          <input class="popup__input popup__input_type_card-add-link" id="link" type="url" name="link" placeholder="Ссылка на картинку" autocomplete="off">
+        <form class="popup__form" name="card-form" novalidate>
+          <label class="popup__field">
+            <input class="popup__input popup__input_type_card-add-heading" id="heading-input" type="text" name="heading" placeholder="Название" autocomplete="off" required minlength="2" maxlength="30">
+            <span class="popup__input-error heading-input-error"></span>
+          </label>
+          <label class="popup__field">
+            <input class="popup__input popup__input_type_card-add-link" id="link-input" type="url" name="link" placeholder="Ссылка на картинку" autocomplete="off" required>
+            <span class="popup__input-error link-input-error"></span>
+          </label>
           <button type="submit" class="popup__submit-button" aria-label="submit" id="card__submit-button">Сохранить</button>
         </form>
       </div>
@@ -69,6 +81,7 @@
       </figure>
     </div>
   </div>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>

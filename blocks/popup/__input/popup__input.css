@@ -23,6 +23,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 17px;
+    opacity: .4;
 }
 
 .popup__input:focus {
@@ -34,6 +35,17 @@
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
+}
+
+.popup__input:invalid {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 0, 0, 1);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
 }
 
 @media all and (max-width: 600px) {

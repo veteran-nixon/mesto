@@ -4,6 +4,8 @@ const profileName = document.querySelector('.profile__name');
 const profileBio = document.querySelector('.profile__bio');
 /** Кнопка открывающая попап */
 const profileEditButton = document.querySelector('.profile__edit-button');
+/** Попап оверлей */
+const popupOverlay = document.querySelectorAll('.popup');
 /** Окно редактирования профиля */
 const profilePopup = document.querySelector('.popup_type_profile');
 /** Кнопка закрывающая окно редактирования профиля нажатием на крестик */ 
@@ -37,13 +39,14 @@ const imageCloseButton = imagePopup.querySelector('.popup__close-icon');
 
 /** Функция открытия попап */
 function openPopup(e) {
+  document.addEventListener('mousedown', onMouseDown);
   e.classList.add('popup_opened');
   }
   
   /** Функция закрытия попап */
-  function closePopup(e) {
+function closePopup(e) {
   e.classList.remove('popup_opened');
-  }
+}
 
 /** Функция отправки данных формы на сервер
  * при нажатии "сохранить" попап закрывается, данные сохраняются в поля "Имя" и "О себе"
@@ -74,7 +77,6 @@ function addNewCard(name, link) {
     caption.textContent = name;
     openPopup(imagePopup);
   });
-
   
   likeButton.addEventListener('click', () => likeButton.classList.toggle('element__like-button_active'));
   trashButton.addEventListener('click', () => trashButton.closest('.element').remove());
@@ -128,10 +130,28 @@ cardFormElement.addEventListener('submit', cardFormSubmitHandler);
 /** Закрыть попап с картинкой */
 imageCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
+let preventClose = false;
+const onMouseDown = (evt) => {
+  preventClose = !!evt.target.closest('.popup__container');
+}
 
-
-
-
-
-
+/** Закрыть попап кликом на оверлей */
+popupOverlay.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (preventClose) return;
+    if (evt.target.classList.contains('popup') ||  evt.target.classList.contains('popup__close-icon')) {
+      closePopup(popup);
+    }
+  });
+});
+  
+/** Закрыть попап кликом на Esc */
+popupOverlay.forEach((popup) => {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === "Escape") {
+      closePopup(popup);
+    }
+  });
+});
+  
 
