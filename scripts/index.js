@@ -22,6 +22,8 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const cardPopup = document.querySelector('.popup_type_card-add');
 /** Кнопка закрывающая окно добавления карточки нажатием на крестик */ 
 const cardCloseButton = cardPopup.querySelector('.popup__close-icon');
+/** Кнопка сабмита новой карточки */
+const cardPopupSubmitButton = cardPopup.querySelector('.popup__submit-button');
 /** Форма добавления карточки */
 const cardFormElement = cardPopup.querySelector('.popup__form');
 /** Поле названия карточки в попап*/
@@ -39,13 +41,14 @@ const imageCloseButton = imagePopup.querySelector('.popup__close-icon');
 
 /** Функция открытия попап */
 function openPopup(e) {
-  document.addEventListener('mousedown', onMouseDown);
-  e.classList.add('popup_opened');
-  }
-  
-  /** Функция закрытия попап */
+    document.addEventListener('mousedown', onMouseDown);
+    e.classList.add('popup_opened');
+}
+
+/** Функция закрытия попап */
 function closePopup(e) {
-  e.classList.remove('popup_opened');
+    document.removeEventListener('mousedown', onMouseDown);
+    e.classList.remove('popup_opened');
 }
 
 /** Функция отправки данных формы на сервер
@@ -59,7 +62,7 @@ function closePopup(e) {
 }
 
 /**Фунция добавления новой карточки через заполнение полей 'Название' и 'Ссылка на картинку' */
-function addNewCard(name, link) {
+function createCard(name, link) {
   const element = template.cloneNode(true);
   const trashButton = element.querySelector('.element__trash-button');
   const likeButton = element.querySelector('.element__like-button');
@@ -86,7 +89,7 @@ function addNewCard(name, link) {
 
 /** Функция добавления 6 карточек из елементов массима initialCards */
 initialCards.forEach (elem => {
-  elements.append(addNewCard(elem.name, elem.link));
+  elements.append(createCard(elem.name, elem.link));
 });
 
 /** Фунция сохранения формы для новой карточки */
@@ -101,7 +104,9 @@ function cardFormSubmitHandler (evt) {
     closePopup(cardPopup);
     headingInput.value = '';
     linkInput.value = '';
-    elements.prepend(addNewCard(newCard.name, newCard.link));
+    elements.prepend(createCard(newCard.name, newCard.link));
+    cardPopupSubmitButton.setAttribute('disabled', true)
+    cardPopupSubmitButton.classList.add('popup__submit-button_inactive');
   }
 }
 
@@ -147,7 +152,7 @@ popupOverlay.forEach((popup) => {
   
 /** Закрыть попап кликом на Esc */
 popupOverlay.forEach((popup) => {
-  document.addEventListener('keydown', (evt) => {
+  window.addEventListener('keydown', (evt) => {
     if (evt.key === "Escape") {
       closePopup(popup);
     }
