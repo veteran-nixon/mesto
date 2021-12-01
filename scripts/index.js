@@ -38,16 +38,19 @@ const template = document.querySelector('#element').content;
 const imagePopup = document.querySelector('.popup_type_picture');
 /** Кнопка закрывающая попап с картинкой */
 const imageCloseButton = imagePopup.querySelector('.popup__close-icon');
+const escCode = 'Escape';
 
 /** Функция открытия попап */
 function openPopup(e) {
-    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('keydown', closeByEsc);
+    document.addEventListener('click', closeByClick);
     e.classList.add('popup_opened');
 }
 
 /** Функция закрытия попап */
 function closePopup(e) {
-    document.removeEventListener('mousedown', onMouseDown);
+    document.removeEventListener('keydown', closeByEsc);
+    document.removeEventListener('click', closeByClick);
     e.classList.remove('popup_opened');
 }
 
@@ -95,8 +98,6 @@ initialCards.forEach (elem => {
 /** Фунция сохранения формы для новой карточки */
 function cardFormSubmitHandler (evt) {
   evt.preventDefault();
-  if (headingInput.value == '' || linkInput.value == '') {
-  } else {
     const newCard = {
       name: headingInput.value,
       link: linkInput.value
@@ -107,7 +108,6 @@ function cardFormSubmitHandler (evt) {
     elements.prepend(createCard(newCard.name, newCard.link));
     cardPopupSubmitButton.setAttribute('disabled', true)
     cardPopupSubmitButton.classList.add('popup__submit-button_inactive');
-  }
 }
 
 /** Открыть попап редактирования профиля */
@@ -135,28 +135,18 @@ cardFormElement.addEventListener('submit', cardFormSubmitHandler);
 /** Закрыть попап с картинкой */
 imageCloseButton.addEventListener('click', () => closePopup(imagePopup));
 
-let preventClose = false;
-const onMouseDown = (evt) => {
-  preventClose = !!evt.target.closest('.popup__container');
+function closeByEsc(evt) {
+  if (evt.key === escCode) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
+  }
 }
 
-/** Закрыть попап кликом на оверлей */
-popupOverlay.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    if (preventClose) return;
-    if (evt.target.classList.contains('popup') ||  evt.target.classList.contains('popup__close-icon')) {
-      closePopup(popup);
-    }
-  });
-});
-  
-/** Закрыть попап кликом на Esc */
-popupOverlay.forEach((popup) => {
-  window.addEventListener('keydown', (evt) => {
-    if (evt.key === "Escape") {
-      closePopup(popup);
-    }
-  });
-});
+function closeByClick(evt) {
+  if (evt.target.classList.contains('popup')) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
   
 
