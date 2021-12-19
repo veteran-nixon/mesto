@@ -29,12 +29,12 @@ const initialCards = [
   ];
 
   class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, openPopup) {
       this._name = data.name;
       this._link = data.link;
       this._alt = data.name;
       this._cardSelector = cardSelector;
-      // this._handleCardClick = handleCardClick;
+      this._openPopup = openPopup;
     }
 
     _getTemplate() {
@@ -83,21 +83,11 @@ const initialCards = [
       this._element = null;
     }
 
-    _handleCardClick(name, link) {
-      this._cardPopup.querySelector('.popup__image').src = link;
-      this._cardPopup.querySelector('.popup__image').alt = name;
-      this._cardPopup.querySelector('.popup__heading').textContent = name;
-      document.addEventListener('keydown', (evt) => {
-        if (evt.key === "Escape") {
-          this._cardPopup.classList.remove('popup_opened');
-        }
-      });
-      document.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup')) {
-          this._cardPopup.classList.remove('popup_opened');
-        }
-      });
-      this._cardPopup.classList.add('popup_opened');
+    _handleCardClick(name, link) { 
+      this._cardPopup.querySelector('.popup__image').src = link; 
+      this._cardPopup.querySelector('.popup__image').alt = name; 
+      this._cardPopup.querySelector('.popup__heading').textContent = name; 
+      this._openPopup(this._cardPopup);
     }
   }
 

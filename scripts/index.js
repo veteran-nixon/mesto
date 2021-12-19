@@ -1,6 +1,6 @@
-import { initialCards, Card } from './Card.js';
 import { config, FormValidator } from './FormValidator.js';
 
+import { initialCards, Card } from './Card.js';
 
 /** Поле "Имя" */
 const profileName = document.querySelector('.profile__name');
@@ -67,7 +67,7 @@ function closePopup(e) {
 }
 
 function createCard(item) {
-  const card = new Card(item, '#element');
+  const card = new Card(item, '#element', openPopup);
   const cardElement = card.generateCard();
 
   return cardElement;
@@ -145,12 +145,3 @@ profileValidator.enableValidation();
 const cardValidator =  new FormValidator(config, '.popup_type_card-add');
 cardValidator.enableValidation();
 
-// function handleCardClick(name, link) {
-//   imagePopup.querySelector('.popup__image').src = link;
-//   imagePopup.querySelector('.popup__image').alt = name;
-//   imagePopup.querySelector('.popup__heading').textContent = name;
-  
-//   imagePopup.addEventListener('click', () => {
-//     openPopup(imagePopup); 
-//   }); 
-// }

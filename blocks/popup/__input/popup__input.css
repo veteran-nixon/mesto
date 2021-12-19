@@ -37,7 +37,7 @@
     -o-border-radius: 3px;
 }
 
-.popup__input:invalid {
+/* .popup__input:invalid {
     border: none;
     box-shadow: none;
     border-radius: 0;
@@ -46,7 +46,7 @@
     -moz-border-radius: 0;
     -ms-border-radius: 0;
     -o-border-radius: 0;
-}
+} */
 
 @media all and (max-width: 600px) {
     .popup__input {
