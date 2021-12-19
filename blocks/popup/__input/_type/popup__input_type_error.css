@@ -1,7 +1,5 @@
 .popup__input_type_error:invalid {
-    box-shadow: none;
     border-radius: 0;
-    /* border: none; */
     box-shadow: 0 0 4px rgba(52, 123, 230, 1);
     border-bottom: 2px solid rgba(255, 0, 0, 1);
     -webkit-border-radius: 0;
@@ -9,14 +7,3 @@
     -ms-border-radius: 0;
     -o-border-radius: 0;
 }
-
-/* .popup__input_type_error:focus {
-    outline: none;
-    border: none;
-    box-shadow: none;
-    border-radius: none;
-    -webkit-border-radius: none;
-    -moz-border-radius: none;
-    -ms-border-radius: none;
-    -o-border-radius: none;
-} */
