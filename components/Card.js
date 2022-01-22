@@ -70,7 +70,7 @@ const initialCards = [
       });
 
       this._cardImage.addEventListener('click', () => {
-        this._handleCardClick(this._name, this._link);
+        this._openPopup(this._name, this._link);
       });
     }
 
@@ -83,12 +83,12 @@ const initialCards = [
       this._element = null;
     }
 
-    _handleCardClick(name, link) { 
-      this._cardPopup.querySelector('.popup__image').src = link; 
-      this._cardPopup.querySelector('.popup__image').alt = name; 
-      this._cardPopup.querySelector('.popup__heading').textContent = name; 
-      this._openPopup(this._cardPopup);
-    }
+    // _handleCardClick(name, link) { 
+    //   this._cardPopup.querySelector('.popup__image').src = link; 
+    //   this._cardPopup.querySelector('.popup__image').alt = name; 
+    //   this._cardPopup.querySelector('.popup__heading').textContent = name; 
+    //   this._openPopup(this._cardPopup);
+    // }
   }
 
   
