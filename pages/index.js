@@ -1,24 +1,29 @@
 import './index.css';
-import { config, FormValidator } from '../components/FormValidator.js';
-import { initialCards, Card } from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Card from '../components/Card.js';
 import PopupWithImage from '../components/popupWithImage.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import { nameInput, bioInput, cardAddButton, profileEditButton } from '../utils/constants.js'
+import { nameInput, bioInput, cardAddButton, profileEditButton, initialCards, config } from '../utils/constants.js'
 
 /** попап с картинкой */
 const openPopupWithImage = new PopupWithImage('.popup_type_picture');
 /** слушатель закрытия попап нажатием на крестик */
 openPopupWithImage.setEventListeners();
 
+/** создать экземляр карточки */
+const copyCard = (item) => {
+  const card = new Card(item, '#element', () => openPopupWithImage.open(item));
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 /** добавить 6 карточек на страницу */
 const cardList = new Section({
   item: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#element', () => openPopupWithImage.open(item));
-    const cardElement = card.generateCard();
-    cardList.addItems(cardElement);
+    cardList.addItems(copyCard(item));
     }
   },
   '.elements');
@@ -31,12 +36,13 @@ cardList.renderItems();
       name: data.heading,
       link: data.link
     }
-    const newCard = new Card(newItem, '#element', () => openPopupWithImage.open(newItem));
-    const cardElement = newCard.generateCard();
-    cardList.addNewItem(cardElement);
+    cardList.addNewItem(copyCard(newItem));
     }
   );
-  cardAddButton.addEventListener('click', () => createCard.open());
+  cardAddButton.addEventListener('click', () => {
+    createCard.open();
+    cardValidator.resetValidation();
+  });
   createCard.setEventListeners();
 
   /** попап редактирования профиля */
@@ -50,14 +56,14 @@ const profilePopup = new PopupWithForm('.popup_type_profile', (data) => {
     name: data.name,
     bio: data.bio
   }
-  console.log(newUserInfo)
-  profileInfo.setUserInfo(newUserInfo)
+  profileInfo.setUserInfo(newUserInfo);
 });
 profileEditButton.addEventListener('click', () => { 
-  profilePopup.open();
   const getUserInfo = profileInfo.getUserInfo();
   nameInput.value = getUserInfo.name;
   bioInput.value = getUserInfo.bio
+  profilePopup.open();
+  profileValidator.resetValidation();
 })
 profilePopup.setEventListeners();
 

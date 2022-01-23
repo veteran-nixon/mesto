@@ -1,5 +1,6 @@
 .main {
     width: 880px;
+    min-height: 80vh;
     margin: 0 auto;
 }
 
