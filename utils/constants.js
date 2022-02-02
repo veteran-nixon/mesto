@@ -1,4 +1,4 @@
-export { nameInput, bioInput, cardAddButton, profileEditButton, initialCards, config }
+export { nameInput, bioInput, cardAddButton, profileEditButton, config, profileName, profileAbout, avatarEditeButton, profileAvatar }
 
 /** Поле ввода имени в попап*/
 const nameInput = document.querySelector('.popup__input_type_profile-name'); 
@@ -8,34 +8,10 @@ const bioInput = document.querySelector('.popup__input_type_profile-bio');
 const cardAddButton = document.querySelector('.profile__add-button');
 /** Кнопка, открывающая попап редактирования профиля */
 const profileEditButton = document.querySelector('.profile__edit-button');
-
-/** Массив с начальными карточками */
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__bio');
+const profileAvatar = document.querySelector('.profile__avatar');
+const avatarEditeButton = document.querySelector('.profile__image');
 
   /** параметры валидации форм */
   const config = {

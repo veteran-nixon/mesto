@@ -1,19 +1,25 @@
 export default class UserInfo {
-    constructor({userName, userBio}) {
-        this._userName = document.querySelector(userName);
-        this._userBio = document.querySelector(userBio);
+    constructor({userName, userBio, userAvatar}) {
+        this._userName = userName;
+        this._userBio = userBio;
+        this._userAvatar = userAvatar;
     }
 
-    getUserInfo() {
+    getUserInfo(data) {
         const userInfo = {
-            name: this._userName.textContent,
-            bio: this._userBio.textContent
+            name: data.name,
+            about: data.about,
+            avatar: data.avatar
         };
         return userInfo;
     }
 
     setUserInfo(data) {
-        this._userName.textContent = data.name;
-        this._userBio.textContent = data.bio;
+        this._userName = data.name;
+        this._userBio = data.about;
+    }
+
+    setUserAvatar(data) {
+        this._userAvatar = data.avatar;
     }
 }

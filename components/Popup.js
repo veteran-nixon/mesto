@@ -3,6 +3,7 @@ export default class Popup {
         this._popup = document.querySelector(popupSelector);
         this._closeIcon = document.querySelector(popupSelector).querySelector('.popup__close-icon');
         this._openedPopup = document.querySelector('.popup_opened');
+        this._popupSubmitButton = document.querySelector(popupSelector).querySelector('.popup__submit-button');
     }
 
     open() {
@@ -32,4 +33,12 @@ export default class Popup {
     setEventListeners() {
         this._closeIcon.addEventListener('click', () => this.close());
     }
+
+    renderLoading(isLoading, text) {
+        if(isLoading) {
+          this._popupSubmitButton.textContent = `${text}...`;
+        } else {
+            this._popupSubmitButton.textContent = text;
+        }
+      }
 }

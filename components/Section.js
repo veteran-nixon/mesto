@@ -18,4 +18,8 @@ export default class Section {
             this._renderer(item);
         });
     }
+
+    renderItem(item) {
+        this._renderer(item);
+    }
 }
