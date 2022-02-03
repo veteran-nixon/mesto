@@ -4,19 +4,26 @@ export default class Api {
         this._headers = headers;
     }
 
-    getObject() {
-        return fetch(this._url, { headers: this._headers })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка ${res.status}`);
+    } 
 
-            return Promise.reject(`Something went wrong!`)
-        })
+    getUser() {
+        return fetch(`${this._url}/users/me`, { headers: this._headers })
+            .then(this._checkResponse)
     }
 
+    getCard() {
+        return fetch(`${this._url}/cards`, { headers: this._headers })
+            .then(this._checkResponse)
+    }
+    
+
     createNewCard(data) {
-        return fetch(this._url, { 
+        return fetch(`${this._url}/cards`, { 
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
@@ -24,17 +31,11 @@ export default class Api {
                 link: data.link
             })
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 
     editProfile(data) {
-        return fetch(this._url, { 
+        return fetch(`${this._url}/users/me`, { 
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -42,86 +43,42 @@ export default class Api {
                 about: data.about
             })
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 
     editAvatar(data) {
-        return fetch(`${this._url}/avatar`, { 
+        return fetch(`${this._url}/users/me/avatar`, { 
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
                 avatar: data.avatar
             })
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 
-    deleteCard(id) {
-        return fetch(`${this._url}/${id}`, { 
+    deleteCard(data) {
+        return fetch(`${this._url}/cards/${data._id}`, { 
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 
     putLike(id) {
-        return fetch(`${this._url}/${id}/likes`, { 
+        return fetch(`${this._url}/cards/${id}/likes`, { 
             method: 'PUT',
             headers: this._headers
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 
 
     deleteLike(id) {
-        return fetch(`${this._url}/${id}/likes`, { 
+        return fetch(`${this._url}/cards/${id}/likes`, { 
             method: 'DELETE',
             headers: this._headers
         })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
-    }
-
-    getLikes(data) {
-        return fetch(`${this._url}/${data._id}/likes`, { 
-            method: 'GET',
-            headers: this._headers
-        })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-
-            return Promise.reject(`Something went wrong!`)
-        });
+        .then(this._checkResponse)
     }
 }

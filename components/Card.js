@@ -1,5 +1,5 @@
 export default class Card {
-    constructor(data, user, cardSelector, openPopup, handleDeleteCard, putLike, deleteLike) {
+    constructor(data, user, cardSelector, openPopup, handleDeleteCard, handleLikeClick) {
       this._user = user._id;
       this._owner = data.owner._id;
       this._name = data.name;
@@ -9,8 +9,7 @@ export default class Card {
       this._cardSelector = cardSelector;
       this._openPopup = openPopup;
       this._handleDeleteCard = handleDeleteCard;
-      this._putLike = putLike;
-      this._deleteLike = deleteLike;
+      this._handleLikeClick = handleLikeClick;
 
     }
 
@@ -44,11 +43,11 @@ export default class Card {
     _setEventListeners() {
 
       this._likeButton.addEventListener('click', () => {
-        if(this.isLiked()) {
-          this._deleteLike();
+        if(this._likes.some((user) => user._id === this._user)) {
+          this._handleLikeClick()
           this._likeButton.classList.remove('element__like-button_active');
-        } else {
-          this._putLike();
+        } else if(!this._likes.some((user) => user._id === this._user)) {
+          this._handleLikeClick()
           this._likeButton.classList.add('element__like-button_active');
         }
       });
@@ -56,7 +55,7 @@ export default class Card {
       
 
       this._trashButton.addEventListener('click', () => {
-          this._handleDeleteCard(this._element)
+          this._handleDeleteCard();
       });
 
       this._cardImage.addEventListener('click', () => {
@@ -79,8 +78,8 @@ export default class Card {
       this._element = null;
     }
 
-    isLiked() {
-      if(this._likes.some((user) => user._id === this._user)) return true;
+    isLiked(data) {
+      if(this._likes.some((user) => user._id === this._user)) return true, this._likes.shift(data);
       else return false;
     }
 
@@ -89,23 +88,13 @@ export default class Card {
     //   this._likeButton.classList.add('element__like-button_active');
     // }
 
-
-    
-
     countLikes(data) {
-      if(this.isLiked()) {
-        this._deleteLike();
         this._likeCounter.textContent = data.likes.length;
-      } else {
-        this._putLike();
-        this._likeCounter.textContent = data.likes.length;
-        
-      }
     }
 
     renderLike() {
       this._likeCounter.textContent = this._likes.length;
-      if(this.isLiked()) {
+      if(this._likes.some((user) => user._id === this._user)) {
         this._likeButton.classList.add('element__like-button_active');
       } else {
         this._likeButton.classList.remove('element__like-button_active');
