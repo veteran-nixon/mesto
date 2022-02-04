@@ -11,6 +11,10 @@ export default class Api {
         return Promise.reject(`Ошибка ${res.status}`);
     } 
 
+    getAllData() {
+        return Promise.all([this.getUser(), this.getCard()])
+    }
+
     getUser() {
         return fetch(`${this._url}/users/me`, { headers: this._headers })
             .then(this._checkResponse)
@@ -21,7 +25,6 @@ export default class Api {
             .then(this._checkResponse)
     }
     
-
     createNewCard(data) {
         return fetch(`${this._url}/cards`, { 
             method: 'POST',
