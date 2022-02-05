@@ -1,4 +1,4 @@
-export { nameInput, bioInput, cardAddButton, profileEditButton, config, profileName, profileAbout, avatarEditeButton, profileAvatar }
+export { nameInput, bioInput, cardAddButton, profileEditButton, config, profileName, profileAbout, avatarEditeButton }
 
 /** Поле ввода имени в попап*/
 const nameInput = document.querySelector('.popup__input_type_profile-name'); 
@@ -10,7 +10,6 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__bio');
-const profileAvatar = document.querySelector('.profile__avatar');
 const avatarEditeButton = document.querySelector('.profile__image');
 
   /** параметры валидации форм */

@@ -7,7 +7,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-import { nameInput, bioInput, cardAddButton, profileEditButton,  config, profileName, profileAbout, avatarEditeButton, profileAvatar } from '../utils/constants.js';
+import { nameInput, bioInput, cardAddButton, profileEditButton,  config, profileName, profileAbout, avatarEditeButton } from '../utils/constants.js';
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-34',
@@ -18,8 +18,14 @@ const api = new Api({
 });
 
 /** Информация о пользователе */
-const profileInfo = new UserInfo({});
-
+const profileInfo = new UserInfo({ userName: '.profile__name', userAbout: '.profile__bio', userAvatar: '.profile__avatar' });
+/** добавить карточки на страницу */
+const cardList = new Section({
+  renderer: (item, user) => {
+    cardList.addItems(copyCard(item, user));
+  }
+},
+  '.elements');
 /** попап с картинкой */
 const openPopupWithImage = new PopupWithImage('.popup_type_picture');
 /**Валидация формы редактирования профиля */
@@ -47,7 +53,8 @@ const copyCard = (item, user) => {
 
 /**функция удаления карточки */
 function deleteMyCard(item, card) {
-  deleteCardPopup.setSubmitCallback(() => {
+  deleteCardPopup.setSubmitCallback((evt) => {
+    evt.preventDefault();
     api.deleteCard(item)
       .then(() => card.deleteCard())
       .catch(err => console.log(err))
@@ -75,26 +82,19 @@ function deleteLike(item, card) {
     .catch(err => console.log(err))
 }
 
-/** добавить карточки на страницу */
-function getCardList(data, user) {
-  const cardList = new Section({
-    item: data,
-    renderer: (item) => {
-      cardList.addItems(copyCard(item, user));
-    }
-  },
-    '.elements');
-  return cardList;
-}
 
+let ID = null;
 /** Загрузить информацию о пользователе и карточки с сервера*/
 api.getAllData()
   .then(([user, data]) => {
-    getCardList(data, user).renderItems()
-    profileName.textContent = profileInfo.getUserInfo(user).name;
-    profileAbout.textContent = profileInfo.getUserInfo(user).about;
-    profileAvatar.src = profileInfo.getUserInfo(user).avatar;
+    cardList.renderItems(user, data);
+    profileInfo.setUserInfo(user);
+    profileInfo.setUserAvatar(user);
+    ID = user; 
   })
+  .catch(err => console.log(err))
+
+  
 
 /** добавить новую карточку */
 const createCardPopup = new PopupWithForm('.popup_type_card-add',
@@ -103,27 +103,18 @@ const createCardPopup = new PopupWithForm('.popup_type_card-add',
       name: data.heading,
       link: data.link
     }
-    const cardList = new Section({
-      item: data,
-      renderer: (newItem) => {
-        createCardPopup.renderLoading(true, 'Сохранение')
-        api.getUser()
-          .then(user => {
-            api.createNewCard(newItem)
-            .then(newItem => {
-              cardList.addNewItem(copyCard(newItem, user))
-            })
-            .finally(() => {
-              createCardPopup.renderLoading(false, 'Сохранить');
-              createCardPopup.close();
-            })
-          })
-          .catch(err => console.log(err))
-      }
-    },
-      '.elements');
-    cardList.renderItem(newItem)
-  });
+    createCardPopup.renderLoading(true, 'Сохранение')
+    api.createNewCard(newItem)
+      .then((newItem) => {
+        cardList.addNewItem(copyCard(newItem, ID))
+       })
+      .catch(err => console.log(err))
+      .finally(() => {
+        createCardPopup.renderLoading(false, 'Сохранить');
+        createCardPopup.close();
+      })
+  })  
+    
   
 
 /** редактировать профиль */
@@ -142,12 +133,6 @@ const profilePopup = new PopupWithForm('.popup_type_profile', (data) => {
       profilePopup.renderLoading(false, 'Сохранить');
       profilePopup.close()
     })
-  api.getUser()
-    .then((data) => {
-    profileName.textContent = profileInfo.getUserInfo(data).name;
-    profileAbout.textContent = profileInfo.getUserInfo(data).about;
-  })
-  .catch(err => console.log(err))
 });
 
 /** редактировать аватар */
@@ -159,13 +144,6 @@ const avatarPopup = new PopupWithForm('.popup_type_avatar', (data) => {
     api.editAvatar(newUserAvatar)
       .then((newUserAvatar) => {
         profileInfo.setUserAvatar(newUserAvatar);
-        profileAvatar.src = newUserAvatar.avatar;
-      })
-     .then(() => {
-        api.getUser()
-          .then((data) => {
-            profileAvatar.src = profileInfo.getUserInfo(data).avatar;
-          })
       })
       .catch(err => console.log(err))
       .finally(() => {
