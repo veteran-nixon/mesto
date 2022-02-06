@@ -88,6 +88,7 @@ let ID = null;
 api.getAllData()
   .then(([user, data]) => {
     cardList.renderItems(user, data);
+    // profileInfo.getUserInfo();
     profileInfo.setUserInfo(user);
     profileInfo.setUserAvatar(user);
     ID = user; 
@@ -166,8 +167,8 @@ avatarEditeButton.addEventListener('click', () => {
 avatarPopup.setEventListeners();
 /**слушатели  редактирования профиля*/
 profileEditButton.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  bioInput.value = profileAbout.textContent;
+  nameInput.value = profileInfo.getUserInfo().name;
+  bioInput.value = profileInfo.getUserInfo().about;
   profileValidator.enableValidation();
   profilePopup.open();
   profileValidator.resetValidation();
